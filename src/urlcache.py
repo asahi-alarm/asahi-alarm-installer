@@ -85,7 +85,8 @@ class URLCache:
             res.read()
             loc = res.getheader("Location", None)
             if loc is not None:
-                self.url = parse.urlparse(loc)
+                url = parse.urlparse(loc)
+                self.url = url._replace(path=loc)
                 self.con = None
                 continue
             return int(res.getheader("Content-length"))

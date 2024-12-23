@@ -2,10 +2,10 @@
     "os_list": [
         {
             "name": "Asahi Alarm Minimal",
-            "default_os_name": "Asahi Alarm Linux Minimal",
+            "default_os_name": "Asahi Alarm Minimal",
             "boot_object": "m1n1.bin",
             "next_object": "m1n1/boot.bin",
-            "package": "https://github.com/asahi-alarm/asahi-alarm/releases/download/installer/asahi-base.zip",
+            "package": "http://192.168.1.184/asahi-base.zip",
             "supported_fw": [
                 "12.3",
                 "12.3.1",
@@ -26,7 +26,71 @@
                 {
                     "name": "Root",
                     "type": "Linux",
-                    "size": "4616859648B",
+                    "size": "2209614225B",
+                    "expand": true,
+                    "image": "root.img"
+                }
+            ]
+        },
+        {
+            "name": "Asahi Alarm GNOME",
+            "default_os_name": "Asahi Alarm GNOME",
+            "boot_object": "m1n1.bin",
+            "next_object": "m1n1/boot.bin",
+            "package": "http://192.168.1.184/asahi-gnome.zip",
+            "supported_fw": [
+                "12.3",
+                "12.3.1",
+                "13.5"
+            ],
+            "extras": {},
+            "partitions": [
+                {
+                    "name": "EFI",
+                    "type": "EFI",
+                    "size": "524288000B",
+                    "format": "fat",
+                    "volume_id": "0x2abf9f91",
+                    "copy_firmware": true,
+                    "copy_installer_data": true,
+                    "source": "esp"
+                },
+                {
+                    "name": "Root",
+                    "type": "Linux",
+                    "size": "12731025809B",
+                    "expand": true,
+                    "image": "root.img"
+                }
+            ]
+        },
+        {
+            "name": "Asahi Alarm Plasma",
+            "default_os_name": "Asahi Alarm Plasma",
+            "boot_object": "m1n1.bin",
+            "next_object": "m1n1/boot.bin",
+            "package": "http://192.168.1.184/asahi-plasma.zip",
+            "supported_fw": [
+                "12.3",
+                "12.3.1",
+                "13.5"
+            ],
+            "extras": {},
+            "partitions": [
+                {
+                    "name": "EFI",
+                    "type": "EFI",
+                    "size": "524288000B",
+                    "format": "fat",
+                    "volume_id": "0x2abf9f91",
+                    "copy_firmware": true,
+                    "copy_installer_data": true,
+                    "source": "esp"
+                },
+                {
+                    "name": "Root",
+                    "type": "Linux",
+                    "size": "12731025809B",
                     "expand": true,
                     "image": "root.img"
                 }
@@ -37,7 +101,7 @@
             "default_os_name": "UEFI boot",
             "boot_object": "m1n1.bin",
             "next_object": "m1n1/boot.bin",
-            "package": "uefi-only-20231220-1.zip",
+            "package": "http://192.168.1.184/uefi-only-20231220-1.zip",
             "supported_fw": [
                 "12.3",
                 "12.3.1",

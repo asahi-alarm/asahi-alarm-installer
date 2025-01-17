@@ -5,7 +5,7 @@
             "default_os_name": "Asahi Alarm Minimal",
             "boot_object": "m1n1.bin",
             "next_object": "m1n1/boot.bin",
-            "package": "https://github.com/asahi-alarm/asahi-alarm/releases/download/installer/asahi-base.zip",
+            "package": "https://asahi-alarm.org/asahi-base.zip",
             "supported_fw": [
                 "12.3",
                 "12.3.1",
@@ -33,11 +33,75 @@
             ]
         },
         {
+            "name": "Asahi Alarm GNOME",
+            "default_os_name": "Asahi Alarm GNOME",
+            "boot_object": "m1n1.bin",
+            "next_object": "m1n1/boot.bin",
+            "package": "https://asahi-alarm.org/asahi-gnome.zip",
+            "supported_fw": [
+                "12.3",
+                "12.3.1",
+                "13.5"
+            ],
+            "extras": {},
+            "partitions": [
+                {
+                    "name": "EFI",
+                    "type": "EFI",
+                    "size": "524288000B",
+                    "format": "fat",
+                    "volume_id": "0x2abf9f91",
+                    "copy_firmware": true,
+                    "copy_installer_data": true,
+                    "source": "esp"
+                },
+                {
+                    "name": "Root",
+                    "type": "Linux",
+                    "size": "12731025809B",
+                    "expand": true,
+                    "image": "root.img"
+                }
+            ]
+        },
+        {
+            "name": "Asahi Alarm Plasma",
+            "default_os_name": "Asahi Alarm Plasma",
+            "boot_object": "m1n1.bin",
+            "next_object": "m1n1/boot.bin",
+            "package": "https://asahi-alarm.org/asahi-plasma.zip",
+            "supported_fw": [
+                "12.3",
+                "12.3.1",
+                "13.5"
+            ],
+            "extras": {},
+            "partitions": [
+                {
+                    "name": "EFI",
+                    "type": "EFI",
+                    "size": "524288000B",
+                    "format": "fat",
+                    "volume_id": "0x2abf9f91",
+                    "copy_firmware": true,
+                    "copy_installer_data": true,
+                    "source": "esp"
+                },
+                {
+                    "name": "Root",
+                    "type": "Linux",
+                    "size": "12731025809B",
+                    "expand": true,
+                    "image": "root.img"
+                }
+            ]
+        },
+        {
             "name": "UEFI environment only (m1n1 + U-Boot + ESP)",
             "default_os_name": "UEFI boot",
             "boot_object": "m1n1.bin",
             "next_object": "m1n1/boot.bin",
-            "package": "https://github.com/asahi-alarm/asahi-alarm/releases/download/installer/uefi-only.zip",
+            "package": "https://asahi-alarm.org/uefi-only.zip",
             "supported_fw": [
                 "12.3",
                 "12.3.1",

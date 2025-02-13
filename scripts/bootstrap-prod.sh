@@ -21,13 +21,12 @@ if true; then
         exit 1
     fi
 
-    export VERSION_FLAG=https://cdn.asahilinux.org/installer/latest
-    export INSTALLER_BASE=https://cdn.asahilinux.org/installer
-    export INSTALLER_DATA=https://github.com/AsahiLinux/asahi-installer/raw/prod/data/installer_data.json
-    export INSTALLER_DATA_ALT=https://alx.sh/installer_data.json
-    export REPO_BASE=https://cdn.asahilinux.org
+    export VERSION_FLAG="https://asahi-alarm.org/latest"
+    export INSTALLER_BASE="https://asahi-alarm.org/"
+    export INSTALLER_DATA="https://asahi-alarm.org/installer_data.json"
+    export REPO_BASE="https://asahi-alarm.org/"
     export REPORT=https://stats.asahilinux.org/report
-    export REPORT_TAG=alx-prod
+    export REPORT_TAG=alarm-prod
 
     #TMP="$(mktemp -d)"
     TMP=/tmp/asahi-install
@@ -55,8 +54,7 @@ if true; then
     if ! curl --no-progress-meter -L -O "$INSTALLER_DATA"; then
         echo "    Error downloading installer_data.json. GitHub might be blocked in your network."
         echo "    Please consider using a VPN if you experience issues."
-        echo "    Trying workaround..."
-        curl --no-progress-meter -L -O "$INSTALLER_DATA_ALT"
+        exit 1
     fi
 
     echo "  Extracting..."

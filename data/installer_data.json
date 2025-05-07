@@ -99,10 +99,76 @@
         {
             "name": "Asahi Alarm XFCE",
             "default_os_name": "Asahi Alarm XFCE",
-            "expert": true,
+            "expert": false,
             "boot_object": "m1n1.bin",
             "next_object": "m1n1/boot.bin",
             "package": "https://asahi-alarm.org/asahi-xfce.zip",
+            "supported_fw": [
+                "12.3",
+                "12.3.1",
+                "13.5"
+            ],
+            "extras": {},
+            "partitions": [
+                {
+                    "name": "EFI",
+                    "type": "EFI",
+                    "size": "524288000B",
+                    "format": "fat",
+                    "volume_id": "0x2abf9f91",
+                    "copy_firmware": true,
+                    "copy_installer_data": true,
+                    "source": "esp"
+                },
+                {
+                    "name": "Root",
+                    "type": "Linux",
+                    "size": "12731025809B",
+                    "expand": true,
+                    "image": "root.img"
+                }
+            ]
+        },
+        {
+            "name": "Asahi Alarm MATE",
+            "default_os_name": "Asahi Alarm MATE",
+            "expert": false,
+            "boot_object": "m1n1.bin",
+            "next_object": "m1n1/boot.bin",
+            "package": "https://asahi-alarm.org/asahi-mate.zip",
+            "supported_fw": [
+                "12.3",
+                "12.3.1",
+                "13.5"
+            ],
+            "extras": {},
+            "partitions": [
+                {
+                    "name": "EFI",
+                    "type": "EFI",
+                    "size": "524288000B",
+                    "format": "fat",
+                    "volume_id": "0x2abf9f91",
+                    "copy_firmware": true,
+                    "copy_installer_data": true,
+                    "source": "esp"
+                },
+                {
+                    "name": "Root",
+                    "type": "Linux",
+                    "size": "12731025809B",
+                    "expand": true,
+                    "image": "root.img"
+                }
+            ]
+        },
+        {
+            "name": "Asahi Alarm LXQT",
+            "default_os_name": "Asahi Alarm LXQT",
+            "expert": false,
+            "boot_object": "m1n1.bin",
+            "next_object": "m1n1/boot.bin",
+            "package": "https://asahi-alarm.org/asahi-lxqt.zip",
             "supported_fw": [
                 "12.3",
                 "12.3.1",

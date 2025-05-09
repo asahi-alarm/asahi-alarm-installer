@@ -196,6 +196,39 @@
             ]
         },
         {
+            "name": "Asahi Alarm Hyprland",
+            "default_os_name": "Asahi Alarm Hyprland",
+            "expert": false,
+            "boot_object": "m1n1.bin",
+            "next_object": "m1n1/boot.bin",
+            "package": "https://asahi-alarm.org/asahi-hyprland.zip",
+            "supported_fw": [
+                "12.3",
+                "12.3.1",
+                "13.5"
+            ],
+            "extras": {},
+            "partitions": [
+                {
+                    "name": "EFI",
+                    "type": "EFI",
+                    "size": "524288000B",
+                    "format": "fat",
+                    "volume_id": "0x2abf9f91",
+                    "copy_firmware": true,
+                    "copy_installer_data": true,
+                    "source": "esp"
+                },
+                {
+                    "name": "Root",
+                    "type": "Linux",
+                    "size": "12731025809B",
+                    "expand": true,
+                    "image": "root.img"
+                }
+            ]
+        },
+        {
             "name": "UEFI environment only (m1n1 + U-Boot + ESP)",
             "default_os_name": "UEFI boot",
             "boot_object": "m1n1.bin",

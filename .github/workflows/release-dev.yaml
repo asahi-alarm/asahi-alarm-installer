@@ -1,10 +1,6 @@
 name: release-dev
-
 on:
-  push:
-    branches: [ main ]
   workflow_dispatch:
-
 jobs:
   release-dev:
     uses: ./.github/workflows/release.yaml

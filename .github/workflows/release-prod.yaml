@@ -1,14 +1,9 @@
 name: release-prod
-
 on:
-  push:
-    tags:
-        - v*
   workflow_dispatch:
-
 jobs:
   release-prod:
     uses: ./.github/workflows/release.yaml
     with:
-        upload-type: installer
+      upload-type: installer
     secrets: inherit

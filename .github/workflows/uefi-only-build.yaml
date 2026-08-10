@@ -23,12 +23,12 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
         with:
           submodules: recursive
 
       - name: Checkout linux
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
         with:
           repository: AsahiLinux/linux
           ref: ${{ vars.UEFI_LINUX_TAG }}
@@ -36,7 +36,7 @@ jobs:
           sparse-checkout: 'arch/arm64/boot/dts/apple/'
 
       - name: Checkout u-boot
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
         with:
           repository: AsahiLinux/u-boot
           ref: ${{ vars.UEFI_UBOOT_TAG }}
@@ -84,7 +84,7 @@ jobs:
           cd out
           zip -r ${{ env.UEFI_ONLY_VERSION }}.zip esp
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: uefi-only-boot.bin
           path: |

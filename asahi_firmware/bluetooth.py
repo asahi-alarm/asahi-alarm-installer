@@ -18,6 +18,7 @@ INCOMPLETE_CHIPS = set([
 
 class BluetoothFWCollection(object):
     VENDORMAP = {
+        "AMKOR": "a",
         "MUR": "m",
         "USI": "u",
         "GEN": None,

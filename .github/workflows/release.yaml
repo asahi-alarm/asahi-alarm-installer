@@ -1,18 +1,14 @@
 name: release
-
 on:
   workflow_call:
     inputs:
-        upload-type:
-            required: true
-            type: string
+      upload-type:
+        required: true
+        type: string
   workflow_dispatch:
-
-
 jobs:
   build:
     uses: ./.github/workflows/build.yaml
-
   upload-artefact:
     needs: build
     runs-on: ubuntu-latest
@@ -22,12 +18,15 @@ jobs:
         with:
           name: installer-build
           path: releases/.
-
-      - name: Push to Bunny
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y sshpass
+      - name: Push to Hetzner
         env:
-          PKG_URL: "https://storage.bunnycdn.com/asahilinux/${{ inputs.upload-type }}"
           PKG_VER: "installer-${{ needs.build.outputs.installer_ver }}"
-          ACCESS_KEY: ${{ secrets.BUNNY_TOKEN }}
+          SSHPASS: ${{ secrets.PASSWORD }}
+          UPLOAD_TYPE: ${{ inputs.upload-type }}
         run: |
           if [ ! -e "releases/${PKG_VER}" ]; then
               echo "Package not found!"
@@ -35,14 +34,15 @@ jobs:
           fi
 
           upload() {
-               curl -# --fail --request PUT \
-                   --url "${2}" \
-                   --variable %ACCESS_KEY \
-                   --expand-header 'AccessKey: {{ACCESS_KEY}}' \
-                   -H "Content-Type: ${3}" \
-                   -H "Accept: application/json" \
-                   --data-binary @${1}
+              sshpass -e scp -o StrictHostKeyChecking=no "${1}" asahim@asahi-alarm.org:"/public_html/${1}.tmp"
+              sshpass -e sftp -o StrictHostKeyChecking=no -o BatchMode=no -b - asahim@asahi-alarm.org << EOF
+          rename /public_html/${1}.tmp /public_html/${1}
+          EOF
           }
 
-          upload "releases/${PKG_VER}" "${PKG_URL}/${PKG_VER}" "application/octet-stream"
-          upload "releases/latest" "${PKG_URL}/latest" "text/plain"
+          cd releases
+          upload "${PKG_VER}"
+
+          if [ "${UPLOAD_TYPE}" = "installer" ]; then
+              upload "latest"
+          fi
